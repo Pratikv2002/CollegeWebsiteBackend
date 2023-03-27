@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
-
-mongoose.connect("mongodb+srv://pratikvyavahare:Mmit2002@collagewebsitedb.y4zg5eq.mongodb.net/test")
+console.log(process.env.DATABASEURL)
+mongoose.connect("mongodb://localhost:27017/CollageWebSiteDB")
 .then((result) => {
     console.log("Connection Successfully");
 }).catch((err) => {
