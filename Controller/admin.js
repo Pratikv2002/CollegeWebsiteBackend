@@ -1,3 +1,4 @@
+const fsExtra = require('fs-extra');
 const uploadStudyMaterialModel = require("../Model/StudyMaterial");
 const multer = require("multer");
 
@@ -46,6 +47,7 @@ const uploadStudyMaterial = async (req, res) => {
       }
       res.status(200).send("Upload Successfully")
       res.end()
+      fsExtra.emptyDirSync("./uploads");
       } catch (error) {
         res.status(500).send(error)
         res.end()
