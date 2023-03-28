@@ -60,7 +60,6 @@ const signUp = async (req,res)=>{
 }
 
 const requestForAdmin = async(req,res)=>{
-    console.log(localStorage.getItem("admin-id"))
     try {
         const data = await RegisterModel.find({Admin:false})
         res.send(data)
