@@ -5,7 +5,7 @@ const jwt = require('jsonwebtoken');
 const RegisterModel = require("../Model/RegisterModel")
 const uploadStudyMaterialModel = require("../Model/StudyMaterial")
 const auth = require("../Middleware/auth")
-localStorage = new LocalStorage('./scratch');
+
 const signIn = async (req,res)=>{
     try {
      
