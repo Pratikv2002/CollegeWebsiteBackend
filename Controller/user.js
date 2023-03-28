@@ -5,10 +5,12 @@ const jwt = require('jsonwebtoken');
 const RegisterModel = require("../Model/RegisterModel")
 const uploadStudyMaterialModel = require("../Model/StudyMaterial")
 const auth = require("../Middleware/auth")
+var LocalStorage = require('node-localstorage').LocalStorage
+localStorage = new LocalStorage('./scratch');
 const signIn = async (req,res)=>{
     try {
      
-       const data = await RegisterModel.findOne({Email:req.body.email})
+       const data = await RegisterModel.findOne({Email:req.body.email,Admin:true})
        const passwordMatch = await bcrypt.compare(req.body.password,data.Password)
        const token = await jwt.sign({Email : data.Email}, process.env.SECRET)
     //    res.cookie('newToken',"hello", { httpOnly: true});
@@ -59,6 +61,7 @@ const signUp = async (req,res)=>{
 }
 
 const requestForAdmin = async(req,res)=>{
+    console.log(localStorage.getItem("admin-id"))
     try {
         const data = await RegisterModel.find({Admin:false})
         res.send(data)
