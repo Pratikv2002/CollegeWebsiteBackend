@@ -6,7 +6,7 @@ const RegisterModel = require("../Model/RegisterModel")
 const uploadStudyMaterialModel = require("../Model/StudyMaterial")
 const auth = require("../Middleware/auth")
 
-const signIn = async (req,res)=>{
+const signIn = async (req,auth,res)=>{
     try {
      
        const data = await RegisterModel.findOne({Email:req.body.email,Admin:true})
@@ -40,9 +40,6 @@ const signUp = async (req,res)=>{
             Password:cryptedPass
           })
           const data = await insertData.save()
-        //   const token = await jwt.sign({Email : data.Email}, process.env.SECRET)
-       
-        //   res.cookie('newToken',token,{httpOnly: true,}  );
           res.status(201).send({isRegister:true,errorMsg:"Register Successfully"})
           res.end()
     } catch (error) {
