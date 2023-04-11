@@ -6,7 +6,7 @@ const RegisterModel = require("../Model/RegisterModel")
 const uploadStudyMaterialModel = require("../Model/StudyMaterial")
 const auth = require("../Middleware/auth")
 
-const signIn = async (req,auth,res)=>{
+const signIn = async (req,res)=>{
     try {
      
        const data = await RegisterModel.findOne({Email:req.body.email,Admin:true})
@@ -115,4 +115,5 @@ const findStudyMaterial = async(req,res)=>{
 
     }
 }
+
 module.exports = {signIn,signUp,requestForAdmin,acceptAdmin,rejectAdmin,findStudyMaterial,team,removeAdmin};
