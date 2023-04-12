@@ -8,7 +8,7 @@ app.use(cookieParser())
 
 const auth = require("../Middleware/auth")
 
-router.post("/admin/login",signIn)
+router.post("/admin/login",auth,signIn)
 router.post("/admin/register",signUp)
 router.get("/requestForAdmin",requestForAdmin)
 router.put("/acceptAdminRequest",acceptAdmin)
