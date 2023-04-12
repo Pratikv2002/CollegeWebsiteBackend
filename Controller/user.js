@@ -17,7 +17,7 @@ const signIn = async (req,res)=>{
        if(!passwordMatch) return res.status(400).json({islogin:false,message: "Incorrect Password"})
        
        if(passwordMatch){
-        res.cookie("auth", token, { httpOnly: true, sameSite: true, maxAge: 24 * 60 * 60 * 1000 });
+        res.cookie("newToken", token, { httpOnly: true, sameSite: true, maxAge: 24 * 60 * 60 * 1000 });
         res.status(200).send({id:data._id,email:data.Email,name:data.Name,islogin:true,token:token,admin:data.Admin})
         res.end()
          }
