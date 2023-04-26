@@ -39,6 +39,7 @@ const signUp = async (req,res)=>{
             Email:req.body.email,
             Password:cryptedPass
           })
+          
           const data = await insertData.save()
           res.status(201).send({isRegister:true,errorMsg:"Register Successfully"})
           res.end()
